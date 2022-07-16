@@ -1,8 +1,0 @@
-{
-	"BuildId": "17155196",
-	"Modules": 
-	{
-		"Savior": "UE4Editor-Savior-Win64-DebugGame.dll",
-		"SaviorEditor": "UE4Editor-SaviorEditor-Win64-DebugGame.dll"
-	}
-}
