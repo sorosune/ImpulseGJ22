@@ -3,16 +3,16 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Engine/GameInstance.h"
-#include "LevelSaver.h"
-#include "ImpulseGameInstance.generated.h"
+#include "Savior.h"
+#include "SaviorMetaData.h"
+#include "LevelData.generated.h"
 
 
 /**
  * 
  */
 UCLASS()
-class IMPULSEGJ22_API UImpulseGameInstance : public UGameInstance
+class IMPULSEGJ22_API ULevelData : public UAutoInstanced
 {
 	GENERATED_BODY()
 
@@ -24,16 +24,16 @@ public:
 
 	// Blueprint Variables
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	ULevelSaver* LevelSaver;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	FGuid SGUID;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	TSubclassOf<ULevelSaver> LevelSaverClass;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, SaveGame)
+	FString LevelName;
+
+	UPROPERTY(SaveGame)
+	bool Saved = false;
 
 	// Getters
-
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "Context"))
-	static UImpulseGameInstance* GetImpulseGameInstance(UObject* Context);
 
 	// Setters
 
@@ -44,18 +44,6 @@ public:
 	// External Overrides
 
 	// External Regular Functions
-
-	UFUNCTION(BlueprintCallable)
-	void SaveLevel(FString InLevelName) { LevelSaver->SaveLevelData(InLevelName); }
-	
-	UFUNCTION(BlueprintCallable)
-	void LoadLevel(FString InLevelName) { LevelSaver->LoadLevelData(InLevelName); }
-
-	UFUNCTION(BlueprintCallable)
-	void SaveGame() { LevelSaver->SaveGame(); }
-
-	UFUNCTION(BlueprintCallable)
-	void LoadGame() { LevelSaver->LoadGame(); }
 
 	// External Events
 
@@ -68,10 +56,9 @@ public:
 	// Initialized Variables
 
 	// Constructor
+	ULevelData();
 
 	// Initializers, and Actor Lifecycle Functions
-
-	virtual void Init() override;
 
 //======================================================================================
 // C++ Protected

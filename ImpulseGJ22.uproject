@@ -9,7 +9,8 @@
 			"Type": "Runtime",
 			"LoadingPhase": "Default",
 			"AdditionalDependencies": [
-				"Engine"
+				"Engine",
+				"CoreUObject"
 			]
 		}
 	],
@@ -27,6 +28,11 @@
 			"Name": "Savior",
 			"Enabled": true,
 			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/a3412bb96a304648a8989da784994084"
+		},
+		{
+			"Name": "AutoSettings",
+			"Enabled": true,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/fcc480bac77b4373bc6c68f0ae4f9847"
 		}
 	]
 }
