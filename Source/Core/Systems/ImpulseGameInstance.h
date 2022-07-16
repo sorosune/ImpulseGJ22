@@ -46,12 +46,6 @@ public:
 	// External Regular Functions
 
 	UFUNCTION(BlueprintCallable)
-	void SaveLevel(FString InLevelName) { LevelSaver->SaveLevelData(InLevelName); }
-	
-	UFUNCTION(BlueprintCallable)
-	void LoadLevel(FString InLevelName) { LevelSaver->LoadLevelData(InLevelName); }
-
-	UFUNCTION(BlueprintCallable)
 	void SaveGame() { LevelSaver->SaveGame(); }
 
 	UFUNCTION(BlueprintCallable)

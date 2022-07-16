@@ -5,8 +5,20 @@
 #include "CoreMinimal.h"
 #include "Savior.h"
 #include "SaviorMetaData.h"
-#include <Core/Systems/LevelData.h>
 #include "LevelSaver.generated.h"
+
+
+USTRUCT(BlueprintType)
+struct FLevelData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, SaveGame)
+	FString LevelName;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, SaveGame)
+	bool Saved = false;
+};
 
 
 /**
@@ -31,13 +43,13 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	USavior* SaveSlot;
 
-	UPROPERTY(SaveGame)
-	bool Saved = false;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame)
+	TArray<FLevelData> Levels;
 
 	// Getters
 
 	UFUNCTION(BlueprintCallable)
-	ULevelData* GetLevelData(FString InLevelName);
+	FLevelData GetLevelData(FString InLevelName);
 
 	// Setters
 
@@ -59,17 +71,10 @@ public:
 
 	// Initialized Variables
 
-	UPROPERTY(SaveGame)
-	TArray<ULevelData*> Levels;
-
 	// Constructor
 	ULevelSaver();
 
 	// Initializers, and Actor Lifecycle Functions
-
-	void SaveLevelData(FString InLevelName);
-
-	void LoadLevelData(FString InLevelName);
 
 	void SaveGame();
 
