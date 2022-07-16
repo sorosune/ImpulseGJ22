@@ -1,0 +1,8 @@
+{
+	"BuildId": "17155196",
+	"Modules": 
+	{
+		"Savior": "UE4Editor-Savior.dll",
+		"SaviorEditor": "UE4Editor-SaviorEditor.dll"
+	}
+}
