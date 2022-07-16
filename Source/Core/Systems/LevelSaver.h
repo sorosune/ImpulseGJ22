@@ -17,7 +17,7 @@ struct FLevelData
 	FString LevelName;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, SaveGame)
-	bool Saved = false;
+	int BestTime = -1;
 };
 
 

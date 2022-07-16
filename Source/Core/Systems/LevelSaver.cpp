@@ -21,7 +21,6 @@ FLevelData ULevelSaver::GetLevelData(FString InLevelName)
 void ULevelSaver::SaveGame()
 {
 	ESaviorResult result, resulth;
-	Levels[0].Saved = true;
 	SaveSlot = USavior::NewSlotInstance(this, SaveSlot, result);
 	SaveSlot->SaveObjectHierarchy(this, result, resulth);
 	if(result != ESaviorResult::Failed)
