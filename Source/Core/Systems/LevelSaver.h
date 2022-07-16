@@ -13,10 +13,10 @@ struct FLevelData
 {
 	GENERATED_BODY()
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, SaveGame)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, SaveGame)
 	FString LevelName;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, SaveGame)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, SaveGame)
 	int BestTime = -1;
 };
 
