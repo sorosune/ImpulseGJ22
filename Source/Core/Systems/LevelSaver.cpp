@@ -36,3 +36,10 @@ void ULevelSaver::LoadGame()
 	SaveSlot->LoadObjectHierarchy(this, result, resulth);
 	SaveSlot = USavior::NewSlotInstance(this, SaveSlot, result);
 }
+
+void ULevelSaver::SetLevelData(FLevelData InLevelData)
+{
+	for (auto& Level : Levels)
+		if (Level.LevelName == InLevelData.LevelName)
+			Level = InLevelData;
+}

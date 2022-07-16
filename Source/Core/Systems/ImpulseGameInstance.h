@@ -37,6 +37,9 @@ public:
 
 	// Setters
 
+	UFUNCTION(BlueprintCallable)
+	void SetLevelData(FLevelData InLevelData) { LevelSaver->SetLevelData(InLevelData); }
+
 	// Wrappers
 
 	// External Virtual Functions

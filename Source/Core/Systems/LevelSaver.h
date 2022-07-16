@@ -80,6 +80,8 @@ public:
 
 	void LoadGame();
 
+	void SetLevelData(FLevelData InLevelData);
+
 //======================================================================================
 // C++ Protected
 protected:
