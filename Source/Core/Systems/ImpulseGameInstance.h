@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
+#include "LevelSaver.h"
 #include "ImpulseGameInstance.generated.h"
+
 
 /**
  * 
@@ -22,9 +24,21 @@ public:
 
 	// Blueprint Variables
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	ULevelSaver* LevelSaver;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TSubclassOf<ULevelSaver> LevelSaverClass;
+
 	// Getters
 
+	UFUNCTION(BlueprintCallable, meta = (WorldContext = "Context"))
+	static UImpulseGameInstance* GetImpulseGameInstance(UObject* Context);
+
 	// Setters
+
+	UFUNCTION(BlueprintCallable)
+	void SetLevelData(FLevelData InLevelData) { LevelSaver->SetLevelData(InLevelData); }
 
 	// Wrappers
 
@@ -33,6 +47,12 @@ public:
 	// External Overrides
 
 	// External Regular Functions
+
+	UFUNCTION(BlueprintCallable)
+	void SaveGame() { LevelSaver->SaveGame(); }
+
+	UFUNCTION(BlueprintCallable)
+	void LoadGame() { LevelSaver->LoadGame(); }
 
 	// External Events
 
@@ -47,6 +67,8 @@ public:
 	// Constructor
 
 	// Initializers, and Actor Lifecycle Functions
+
+	virtual void Init() override;
 
 //======================================================================================
 // C++ Protected
