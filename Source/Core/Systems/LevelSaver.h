@@ -72,6 +72,9 @@ public:
 
 	// External Regular Functions
 
+	UFUNCTION(BlueprintCallable)
+	void AddLevelData(FLevelData InLevelData) { Levels.Add(InLevelData); }
+
 	// External Events
 
 //======================================================================================

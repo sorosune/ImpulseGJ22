@@ -52,6 +52,9 @@ public:
 	// External Regular Functions
 
 	UFUNCTION(BlueprintCallable)
+	void AddLevelData(FLevelData InLevelData) { LevelSaver->AddLevelData(InLevelData); }
+
+	UFUNCTION(BlueprintCallable)
 	void SaveGame() { LevelSaver->SaveGame(); }
 
 	UFUNCTION(BlueprintCallable)
