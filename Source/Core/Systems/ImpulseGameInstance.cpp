@@ -8,7 +8,7 @@ void UImpulseGameInstance::Init()
 {
 	Super::Init();
 	this->Rename(TEXT("ImpulseGameInstance"), GetOuter());
-	LevelSaver = NewObject<ULevelSaver>(this, LevelSaverClass);
+	//LevelSaver = NewObject<ULevelSaver>(this, LevelSaverClass);
 }
 
 UImpulseGameInstance* UImpulseGameInstance::GetImpulseGameInstance(UObject* Context)
