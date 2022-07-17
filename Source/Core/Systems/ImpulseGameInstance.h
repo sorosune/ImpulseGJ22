@@ -52,6 +52,9 @@ public:
 	// External Regular Functions
 
 	UFUNCTION(BlueprintCallable)
+	void Initialize();
+
+	UFUNCTION(BlueprintCallable)
 	void AddLevelData(FLevelData InLevelData) { LevelSaver->AddLevelData(InLevelData); }
 
 	UFUNCTION(BlueprintCallable)
@@ -73,8 +76,6 @@ public:
 	// Constructor
 
 	// Initializers, and Actor Lifecycle Functions
-
-	virtual void Init() override;
 
 //======================================================================================
 // C++ Protected

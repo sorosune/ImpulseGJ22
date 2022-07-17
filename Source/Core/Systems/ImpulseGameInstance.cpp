@@ -4,9 +4,8 @@
 #include "ImpulseGameInstance.h"
 
 
-void UImpulseGameInstance::Init()
+void UImpulseGameInstance::Initialize()
 {
-	Super::Init();
 	this->Rename(TEXT("ImpulseGameInstance"), GetOuter());
 	LevelSaver = NewObject<ULevelSaver>(this, LevelSaverClass);
 }
