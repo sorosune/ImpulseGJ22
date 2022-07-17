@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Savior.h"
 #include "SaviorMetaData.h"
+#include <Runtime/Engine/Classes/Slate/SlateBrushAsset.h>
 #include "LevelSaver.generated.h"
 
 
@@ -18,6 +19,16 @@ struct FLevelData
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, SaveGame)
 	int BestTime = -1;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, SaveGame)
+	bool LevelLocked = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, SaveGame)
+	bool LevelHidden = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, SaveGame)
+	TArray<int> TrophyIndices;
+
 };
 
 

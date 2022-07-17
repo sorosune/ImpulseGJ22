@@ -35,6 +35,9 @@ public:
 	UFUNCTION(BlueprintCallable, meta = (WorldContext = "Context"))
 	static UImpulseGameInstance* GetImpulseGameInstance(UObject* Context);
 
+	UFUNCTION(BlueprintCallable)
+	FLevelData GetLevelData(FString InLevelName) { return LevelSaver->GetLevelData(InLevelName); }
+
 	// Setters
 
 	UFUNCTION(BlueprintCallable)
