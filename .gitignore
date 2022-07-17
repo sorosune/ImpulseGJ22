@@ -75,3 +75,5 @@ DerivedDataCache/*
 
 # Ryder files
 .idea
+
+Builds/
