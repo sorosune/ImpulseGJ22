@@ -51,9 +51,6 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	FGuid SGUID;
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	USavior* SaveSlot;
-
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame)
 	TArray<FLevelData> Levels;
 

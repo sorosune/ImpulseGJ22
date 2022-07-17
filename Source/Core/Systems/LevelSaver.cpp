@@ -3,6 +3,7 @@
 
 #include "LevelSaver.h"
 #include <Core/HelperFiles/DefinedDebugHelpers.h>
+#include "ImpulseGameInstance.h"
 
 
 ULevelSaver::ULevelSaver()
@@ -21,6 +22,7 @@ FLevelData ULevelSaver::GetLevelData(FString InLevelName)
 bool ULevelSaver::SaveGame()
 {
 	ESaviorResult result, resulth;
+	USavior* SaveSlot = UImpulseGameInstance::GetImpulseGameInstance(this)->SaveSlot;
 	SaveSlot = USavior::NewSlotInstance(this, SaveSlot, result);
 	SaveSlot->SaveObjectHierarchy(this, result, resulth);
 	if (result != ESaviorResult::Failed)
@@ -35,6 +37,7 @@ bool ULevelSaver::SaveGame()
 bool ULevelSaver::LoadGame()
 {
 	ESaviorResult result, resulth;
+	USavior* SaveSlot = UImpulseGameInstance::GetImpulseGameInstance(this)->SaveSlot;
 	SaveSlot = USavior::NewSlotInstance(this, SaveSlot, result);
 	SaveSlot->ReadSlotFromFile(0, result);
 	if (result == ESaviorResult::Failed)

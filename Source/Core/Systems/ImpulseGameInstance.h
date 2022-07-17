@@ -30,6 +30,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	TSubclassOf<ULevelSaver> LevelSaverClass;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	USavior* SaveSlot;
+
 	// Getters
 
 	UFUNCTION(BlueprintCallable, meta = (WorldContext = "Context"))
