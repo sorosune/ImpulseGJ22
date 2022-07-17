@@ -18,7 +18,7 @@ FLevelData ULevelSaver::GetLevelData(FString InLevelName)
 	return FLevelData();
 }
 
-void ULevelSaver::SaveGame()
+bool ULevelSaver::SaveGame()
 {
 	ESaviorResult result, resulth;
 	SaveSlot = USavior::NewSlotInstance(this, SaveSlot, result);
@@ -26,15 +26,17 @@ void ULevelSaver::SaveGame()
 	if(result != ESaviorResult::Failed)
 		SaveSlot->WriteSlotToFile(0, result);
 	SaveSlot = USavior::NewSlotInstance(this, SaveSlot, result);
+	return result == ESaviorResult::Success;
 }
 
-void ULevelSaver::LoadGame()
+bool ULevelSaver::LoadGame()
 {
 	ESaviorResult result, resulth;
 	SaveSlot = USavior::NewSlotInstance(this, SaveSlot, result);
 	SaveSlot->ReadSlotFromFile(0, result);
 	SaveSlot->LoadObjectHierarchy(this, result, resulth);
 	SaveSlot = USavior::NewSlotInstance(this, SaveSlot, result);
+	return result == ESaviorResult::Success;
 }
 
 void ULevelSaver::SetLevelData(FLevelData InLevelData)

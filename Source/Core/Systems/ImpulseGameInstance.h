@@ -55,10 +55,10 @@ public:
 	void AddLevelData(FLevelData InLevelData) { LevelSaver->AddLevelData(InLevelData); }
 
 	UFUNCTION(BlueprintCallable)
-	void SaveGame() { LevelSaver->SaveGame(); }
+	bool SaveGame() { return LevelSaver->SaveGame(); }
 
 	UFUNCTION(BlueprintCallable)
-	void LoadGame() { LevelSaver->LoadGame(); }
+	bool LoadGame() { return LevelSaver->LoadGame(); }
 
 	// External Events
 

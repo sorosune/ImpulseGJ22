@@ -90,9 +90,9 @@ public:
 
 	// Initializers, and Actor Lifecycle Functions
 
-	void SaveGame();
+	bool SaveGame();
 
-	void LoadGame();
+	bool LoadGame();
 
 	void SetLevelData(FLevelData InLevelData);
 
