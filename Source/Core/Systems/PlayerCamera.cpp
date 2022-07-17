@@ -37,9 +37,10 @@ void UPlayerCamera::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	/*
+
 	//Camera auto rotates unless standing still and has moved the right stick
-	if (Owner->GetVelocity().GetAbs().GetMax() > 50)
+	FVector pvel = Owner->GetVelocity();
+	if (pvel.GetAbs().GetMax() > 50)
 	{
 		bHasMoved = true;
 	}
@@ -47,14 +48,14 @@ void UPlayerCamera::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 	CameraForward = Cam->GetForwardVector();
 	CameraForward = { CameraForward.X, CameraForward.Y, 0 };
 	CameraForward.Normalize();
-	FVector pforward = PlayerMesh->GetForwardVector();
-	pforward = { pforward.X, pforward.Y, 0 };
-	pforward.Normalize();
-	FVector pright = PlayerMesh->GetRightVector();
-	pright = { pright.X, pright.Y, 0 };
-	pright.Normalize();
-	float rightdp = FVector::DotProduct(pright, CameraForward);
-	float forwarddp = FVector::DotProduct(pforward, CameraForward);
+	FVector pvelforward = { pvel.X, pvel.Y, 0 };
+	pvelforward.Normalize();
+	FVector pup= PlayerMesh->GetUpVector();
+	pup.Normalize();
+	FVector pvelright = FVector::CrossProduct(pvelforward, pup);
+	pvelright.Normalize();
+	float rightdp = FVector::DotProduct(pvelright, CameraForward);
+	float forwarddp = FVector::DotProduct(pvelforward, CameraForward);
 	if (bHasMoved && forwarddp < 0.99)
 	{
 		float yawAmount = 0.5 - pow(FMath::RadiansToDegrees(acos(forwarddp)) - 180, 2) / 64800;
@@ -67,6 +68,6 @@ void UPlayerCamera::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 			Cast<APawn>(Owner)->AddControllerYawInput(-FMath::RadiansToDegrees(acos(-rightdp) * yawAmount * DeltaTime));
 		}
 	}
-	*/
+	
 }
 
